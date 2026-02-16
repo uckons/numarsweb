@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NuMars Spa • Karaoke • Lounge </title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0b0b0b;
+      --gold: #d4af37;
+      --gold-soft: #f5e6a8;
+      --text: #f5f5f5;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #1a1a1a, var(--black));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)),
+                  url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1600') center/cover;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      max-width: 700px;
+      margin-bottom: 2rem;
+      color: #ddd;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      color: #000;
+    }
+
+    .btn-outline {
+      border: 2px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(212,175,55,0.3);
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.4rem;
+      color: var(--gold);
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #141414, #0f0f0f);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 18px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      border-color: var(--gold);
+    }
+
+    .card h3 {
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    .reservation {
+      background: linear-gradient(135deg, #111, #000);
+      border-radius: 24px;
+      padding: 60px;
+      border: 1px solid rgba(212,175,55,0.25);
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    input, select, textarea {
+      background: #0c0c0c;
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 12px;
+      padding: 14px;
+      color: #fff;
+    }
+
+    input::placeholder, textarea::placeholder { color: #777; }
+
+    footer {
+      padding: 40px 8%;
+      text-align: center;
+      border-top: 1px solid rgba(212,175,55,0.2);
+      color: #aaa;
+    }
+
+    /* WhatsApp Floating Button */
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      z-index: 999;
+      transition: transform 0.3s ease;
+    }
+
+    .wa-float:hover { transform: scale(1.1); }
+
+    .wa-float img {
+      width: 32px;
+      height: 32px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.2rem; }
+      section { padding: 60px 6%; }
+      .reservation { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="numarslogo.png" alt="NuMars Spa Karaoke Lounge" style="width:180px;margin-bottom:20px;" />
+  <h1>NuMars Spa • Karaoke • Lounge</h1>
+  <p>NuMars menghadirkan pengalaman relaksasi dan hiburan premium dengan sentuhan elegan hitam & emas. Reservasi mudah, pelayanan eksklusif.</p>
+  <div>
+    <a href="#reservation" class="btn btn-gold">Reservasi Sekarang</a>
+    <a href="#services" class="btn btn-outline">Lihat Layanan</a>
+  </div>
+</header>
+
+<section id="services">
+  <div class="section-title">
+    <h2>Layanan Kami</h2>
+  </div>
+  <div class="services">
+    <div class="card">
+      <h3>SPA & Massage</h3>
+      <p>Terapi relaksasi premium dengan terapis profesional dan suasana eksklusif.</p>
+    </div>
+    <div class="card">
+      <h3>Luxury Lounge</h3>
+      <p>Tempat bersantai dengan minuman pilihan dan ambience berkelas.</p>
+    </div>
+    <div class="card">
+      <h3>Private Karaoke</h3>
+      <p>Ruang karaoke modern, audio berkualitas tinggi, dan privasi maksimal.</p>
+    </div>
+  </div>
+</section>
+
+<section id="reservation">
+  <div class="section-title">
+    <h2>Reservasi</h2>
+  </div>
+  <div class="reservation">
+    <form>
+      <input type="text" placeholder="Nama Lengkap" required />
+      <input type="tel" placeholder="No. WhatsApp" required />
+      <select required>
+        <option value="">Pilih Layanan</option>
+        <option>SPA & Massage</option>
+        <option>Lounge</option>
+        <option>Karaoke</option>
+      </select>
+      <input type="date" required />
+      <input type="time" required />
+      <textarea rows="3" placeholder="Catatan Tambahan"></textarea>
+      <button class="btn btn-gold" type="submit">Kirim Reservasi</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 NuMars Spa, Karaoke & Lounge. All Rights Reserved.</p>
+</footer>
+
+<!-- WhatsApp Chat -->
+<a class="wa-float" href="https://wa.me/6282246147022?text=Halo%20saya%20ingin%20reservasi" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+</a>
+
+</body>
+</html>
