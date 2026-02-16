@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NuMARS SPA MENU</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #041b23;
+      --bg-2: #0b2d3a;
+      --card: rgba(255, 255, 255, 0.08);
+      --line: rgba(255, 255, 255, 0.2);
+      --gold: #f8c35f;
+      --white: #f8fafc;
+      --muted: #d9e3ea;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, #1a5f73 0%, transparent 60%),
+        radial-gradient(900px 480px at 85% 0%, #10495d 0%, transparent 60%),
+        linear-gradient(170deg, var(--bg-2), var(--bg-1));
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1140px, 92%);
+      margin: 0 auto;
+      padding: 28px 0 60px;
+    }
+
+    .hero {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(4,27,35,0.95), rgba(4,27,35,0.72));
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .hero-inner {
+      width: min(1140px, 92%);
+      margin: 0 auto;
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-logo {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,.5));
+    }
+
+    .hero-title {
+      line-height: 1.1;
+    }
+
+    .hero-title h1 {
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: .02em;
+      color: var(--gold);
+      text-shadow: 0 6px 16px rgba(0,0,0,.45);
+    }
+
+    .hero-title p {
+      font-size: clamp(.78rem, 1.7vw, 1rem);
+      color: var(--muted);
+    }
+
+    .menu-grid {
+      margin-top: 22px;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .menu-card {
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 34px rgba(0,0,0,.35);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 44px rgba(0,0,0,.42);
+    }
+
+    .menu-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .caption {
+      padding: 10px 12px;
+      font-size: .86rem;
+      color: #e8f0f5;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .order {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .hint {
+      margin: 16px 0 6px;
+      font-size: .9rem;
+      color: #c7d8e2;
+      text-align: center;
+    }
+
+    .hint code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(255,255,255,.1);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <img src="numarslogo.png" class="hero-logo" alt="Logo NuMARS" />
+      <div class="hero-title">
+        <h1>NuMARS SPA MENU</h1>
+        <p>Modern • Responsive • Urutan Promo & Menu Lengkap</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="hint">Semua gambar ditampilkan sesuai urutan yang Anda kirim.</p>
+
+    <section class="menu-grid" aria-label="NuMARS menu gallery berurutan">
+      <article class="menu-card"><img loading="lazy" src="images/menu-01-happy-hours.jpg" alt="NuMARS menu 1 happy hours" /><div class="caption"><span>Happy Hours of The Month</span><span class="order">#1</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-02-perfect-three.jpg" alt="NuMARS menu 2 perfect package three" /><div class="caption"><span>Perfect Package Three</span><span class="order">#2</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-03-perfect-pairing.jpg" alt="NuMARS menu 3 perfect pairing" /><div class="caption"><span>Perfect Pairing</span><span class="order">#3</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-04-big-promo.jpg" alt="NuMARS menu 4 big promo" /><div class="caption"><span>Big Promo</span><span class="order">#4</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-05-single-liquor.jpg" alt="NuMARS menu 5 single liquor" /><div class="caption"><span>Single Liquor / Tequila</span><span class="order">#5</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-06-single-vodca.jpg" alt="NuMARS menu 6 single vodca or gin" /><div class="caption"><span>Single Vodca / Gin</span><span class="order">#6</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-07-ptn-iceland.jpg" alt="NuMARS menu 7 ptn bottle iceland" /><div class="caption"><span>PTN Bottle Iceland</span><span class="order">#7</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-08-mars-cocktails.jpg" alt="NuMARS menu 8 mars cocktails" /><div class="caption"><span>Mars Cocktails</span><span class="order">#8</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-09-promo-karaoke.jpg" alt="NuMARS menu 9 promo karaoke" /><div class="caption"><span>Promo Karaoke</span><span class="order">#9</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-10-package-fun-house.jpg" alt="NuMARS menu 10 package fun house" /><div class="caption"><span>Package Fun House</span><span class="order">#10</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-11-deal-breaker.jpg" alt="NuMARS menu 11 deal breaker" /><div class="caption"><span>Deal Breaker</span><span class="order">#11</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-12-price-list.jpg" alt="NuMARS menu 12 price list" /><div class="caption"><span>Main Price List</span><span class="order">#12</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-13-happy-hours-room.jpg" alt="NuMARS menu 13 happy hours room" /><div class="caption"><span>Happy Hours (Room)</span><span class="order">#13</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-14-happy-ending-package.jpg" alt="NuMARS menu 14 happy ending package" /><div class="caption"><span>Happy Ending Package</span><span class="order">#14</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-15-softdrink-food.jpg" alt="NuMARS menu 15 softdrink cigarette food" /><div class="caption"><span>Soft Drink, Cigarette & Food</span><span class="order">#15</span></div></article>
+      <article class="menu-card"><img loading="lazy" src="images/menu-16-special-pitcher.jpg" alt="NuMARS menu 16 special pitcher cocktails and beer" /><div class="caption"><span>Special Pitcher Cocktails & Beer</span><span class="order">#16</span></div></article>
+    </section>
+
+    <p class="hint">Simpan file promo sesuai nama di folder <code>images/</code> agar seluruh gambar tampil otomatis.</p>
+  </main>
+</body>
+</html>
