@@ -56,8 +56,10 @@
     }
 
     .hero-logo {
-      width: 58px;
-      height: 58px;
+      width: auto;
+      height: auto;
+      max-width: min(180px, 40vw);
+      max-height: 58px;
       object-fit: contain;
       filter: drop-shadow(0 4px 10px rgba(0,0,0,.5));
     }
@@ -103,8 +105,8 @@
     .menu-card img {
       width: 100%;
       display: block;
-      aspect-ratio: 4/5;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
       background: rgba(255,255,255,0.03);
     }
 
