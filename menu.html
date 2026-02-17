@@ -138,6 +138,29 @@
       background: rgba(255,255,255,.1);
       color: #fff;
     }
+        /* WhatsApp Floating Button */
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      z-index: 999;
+      transition: transform 0.3s ease;
+    }
+
+    .wa-float:hover { transform: scale(1.1); }
+
+    .wa-float img {
+      width: 32px;
+      height: 32px;
+    }
   </style>
 </head>
 <body>
@@ -173,7 +196,11 @@
       <article class="menu-card"><img loading="lazy" src="images/menu-16-special-pitcher.jpg" alt="NuMARS menu 16 special pitcher cocktails and beer" /><div class="caption"><span>Special Pitcher Cocktails & Beer</span><span class="order">#16</span></div></article>
     </section>
 
-    <p class="hint">Simpan Hubungi GRO Kami Untuk Order Pesanan.</p>
+    <p class="hint">Hubungi GRO Kami Untuk Order Pesanan.</p>
   </main>
+  <!-- WhatsApp Chat -->
+ <a class="wa-float" href="https://wa.me/6282246147022?text=Halo%20saya%20ingin%20pesan%20sesuatu" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+</a>
 </body>
 </html>
