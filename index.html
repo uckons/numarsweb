@@ -3,55 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NuMars Spa • Karaoke • Lounge </title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>NuMars Spa • Karaoke • Lounge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --black: #0b0b0b;
+      --black-soft: #151515;
       --gold: #d4af37;
       --gold-soft: #f5e6a8;
       --text: #f5f5f5;
+      --text-muted: #cfcfcf;
+      --surface: rgba(17, 17, 17, 0.82);
+      --radius: 18px;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --container: min(1120px, 92vw);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #1a1a1a, var(--black));
+      background: radial-gradient(circle at top, #1c1c1c, var(--black));
       color: var(--text);
       line-height: 1.6;
     }
 
+    .container { width: var(--container); margin-inline: auto; }
+
     header {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: grid;
+      place-items: center;
+      padding: 40px 0;
+      background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+        url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1600') center/cover;
+    }
+
+    .hero-card {
+      width: var(--container);
+      background: linear-gradient(140deg, rgba(15, 15, 15, 0.82), rgba(8, 8, 8, 0.92));
+      border: 1px solid rgba(212,175,55,0.24);
+      border-radius: 28px;
+      padding: clamp(26px, 4vw, 48px);
+      backdrop-filter: blur(4px);
+      box-shadow: var(--shadow);
       text-align: center;
-      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)),
-                  url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1600') center/cover;
+    }
+
+    .site-logo {
+      width: auto;
+      height: auto;
+      max-width: min(220px, 55vw);
+      margin-bottom: 10px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      margin: 0 auto 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(212,175,55,0.4);
+      background: rgba(212,175,55,0.08);
+      color: var(--gold-soft);
+      font-size: 0.84rem;
+      letter-spacing: 0.5px;
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: clamp(2rem, 4.2vw, 3.3rem);
       color: var(--gold);
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+      text-wrap: balance;
     }
 
     header p {
-      max-width: 700px;
-      margin-bottom: 2rem;
-      color: #ddd;
+      max-width: 740px;
+      margin: 0 auto 2rem;
+      color: var(--text-muted);
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
     }
 
     .btn {
-      padding: 14px 32px;
-      border-radius: 50px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 24px;
+      border-radius: 999px;
       text-decoration: none;
       font-weight: 600;
-      margin: 0 10px;
-      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+      cursor: pointer;
+      min-height: 48px;
     }
 
     .btn-gold {
@@ -60,115 +117,115 @@
     }
 
     .btn-outline {
-      border: 2px solid var(--gold);
+      border-color: var(--gold);
       color: var(--gold);
+      background: rgba(212,175,55,0.06);
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(212,175,55,0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(212,175,55,0.25);
     }
 
-    .site-logo {
-      width: auto;
-      height: auto;
-      max-width: min(220px, 55vw);
-      margin-bottom: 20px;
-    }
-
-    section {
-      padding: 80px 8%;
-    }
+    section { padding: clamp(64px, 10vw, 96px) 0; }
 
     .section-title {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
 
     .section-title h2 {
-      font-size: 2.4rem;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
       color: var(--gold);
     }
 
     .services {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
     }
 
     .card {
-      background: linear-gradient(180deg, #141414, #0f0f0f);
-      border: 1px solid rgba(212,175,55,0.2);
-      border-radius: 18px;
-      padding: 30px;
+      background: linear-gradient(180deg, #161616, #0e0e0e);
+      border: 1px solid rgba(212,175,55,0.18);
+      border-radius: var(--radius);
+      padding: 26px;
       text-align: center;
-      transition: all 0.4s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-      border-color: var(--gold);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: rgba(212,175,55,0.5);
     }
 
     .card h3 {
       color: var(--gold);
       margin-bottom: 10px;
+      font-size: 1.12rem;
     }
 
-    .card p {
-      color: #ccc;
-      font-size: 0.95rem;
-    }
+    .card p { color: #d0d0d0; font-size: 0.95rem; }
 
     .reservation {
-      background: linear-gradient(135deg, #111, #000);
+      background: linear-gradient(160deg, #141414, #080808);
       border-radius: 24px;
-      padding: 60px;
+      padding: clamp(20px, 4vw, 48px);
       border: 1px solid rgba(212,175,55,0.25);
+      box-shadow: var(--shadow);
     }
 
     form {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
     }
 
     input, select, textarea {
-      background: #0c0c0c;
-      border: 1px solid rgba(212,175,55,0.3);
+      width: 100%;
+      background: var(--black-soft);
+      border: 1px solid rgba(212,175,55,0.28);
       border-radius: 12px;
       padding: 14px;
       color: #fff;
+      font: inherit;
     }
 
-    input::placeholder, textarea::placeholder { color: #777; }
+    textarea { grid-column: 1 / -1; resize: vertical; min-height: 96px; }
+
+    input::placeholder, textarea::placeholder { color: #7f7f7f; }
+
+    button.btn {
+      grid-column: 1 / -1;
+      width: 100%;
+      border: none;
+    }
 
     footer {
-      padding: 40px 8%;
+      padding: 34px 0 42px;
       text-align: center;
       border-top: 1px solid rgba(212,175,55,0.2);
-      color: #aaa;
+      color: #b5b5b5;
     }
 
-    /* WhatsApp Floating Button */
     .wa-float {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 20px;
+      right: 20px;
       width: 60px;
       height: 60px;
-      background: #25D366;
+      background: #25d366;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
       z-index: 999;
-      transition: transform 0.3s ease;
+      transition: transform 0.2s ease;
     }
 
-    .wa-float:hover { transform: scale(1.1); }
+    .wa-float:hover { transform: scale(1.08); }
 
     .wa-float img {
       width: 32px;
@@ -176,75 +233,86 @@
     }
 
     @media (max-width: 768px) {
-      header h1 { font-size: 2.2rem; }
-      section { padding: 60px 6%; }
-      .reservation { padding: 40px 24px; }
+      .hero-card { border-radius: 22px; }
+
+      form { grid-template-columns: 1fr; }
+
+      .hero-actions .btn {
+        width: min(100%, 320px);
+      }
     }
   </style>
 </head>
 <body>
-
-<header>
-  <img src="numarslogo.png" alt="NuMars Spa Karaoke Lounge" class="site-logo" />
-  <h1>NuMars Spa • Karaoke • Lounge</h1>
-  <p>NuMars menghadirkan pengalaman relaksasi dan hiburan premium dengan sentuhan elegan hitam & emas. Reservasi mudah, pelayanan eksklusif.</p>
-  <div>
-    <a href="#reservation" class="btn btn-gold">Reservasi Sekarang</a>
-    <a href="#services" class="btn btn-outline">Lihat Layanan</a>
-    <a href="menu.html" class="btn btn-outline">Lihat Menu Promo</a>
-  </div>
-</header>
-
-<section id="services">
-  <div class="section-title">
-    <h2>Layanan Kami</h2>
-  </div>
-  <div class="services">
-    <div class="card">
-      <h3>SPA & Massage</h3>
-      <p>Terapi relaksasi premium dengan terapis profesional dan suasana eksklusif.</p>
+  <header>
+    <div class="hero-card">
+      <img src="numarslogo.png" alt="NuMars Spa Karaoke Lounge" class="site-logo" />
+      <span class="hero-badge">Premium Experience in Town</span>
+      <h1>NuMars Spa • Karaoke • Lounge</h1>
+      <p>NuMars menghadirkan pengalaman relaksasi dan hiburan premium dengan sentuhan elegan hitam & emas. Reservasi cepat, pelayanan eksklusif, dan suasana private berkelas.</p>
+      <div class="hero-actions">
+        <a href="#reservation" class="btn btn-gold">Reservasi Sekarang</a>
+        <a href="#services" class="btn btn-outline">Lihat Layanan</a>
+        <a href="menu.html" class="btn btn-outline">Lihat Menu Promo</a>
+      </div>
     </div>
-    <div class="card">
-      <h3>Luxury Lounge</h3>
-      <p>Tempat bersantai dengan minuman pilihan dan ambience berkelas.</p>
+  </header>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Layanan Kami</h2>
+      </div>
+      <div class="services">
+        <div class="card">
+          <h3>SPA & Massage</h3>
+          <p>Terapi relaksasi premium dengan terapis profesional dan suasana eksklusif.</p>
+        </div>
+        <div class="card">
+          <h3>Luxury Lounge</h3>
+          <p>Tempat bersantai dengan minuman pilihan dan ambience berkelas.</p>
+        </div>
+        <div class="card">
+          <h3>Private Karaoke</h3>
+          <p>Ruang karaoke modern, audio berkualitas tinggi, dan privasi maksimal.</p>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <h3>Private Karaoke</h3>
-      <p>Ruang karaoke modern, audio berkualitas tinggi, dan privasi maksimal.</p>
+  </section>
+
+  <section id="reservation">
+    <div class="container">
+      <div class="section-title">
+        <h2>Reservasi</h2>
+      </div>
+      <div class="reservation">
+        <form>
+          <input type="text" placeholder="Nama Lengkap" required />
+          <input type="tel" placeholder="No. WhatsApp" required />
+          <select required>
+            <option value="">Pilih Layanan</option>
+            <option>SPA & Massage</option>
+            <option>Lounge</option>
+            <option>Karaoke</option>
+          </select>
+          <input type="date" required />
+          <input type="time" required />
+          <input type="text" placeholder="Jumlah Tamu" />
+          <textarea rows="3" placeholder="Catatan Tambahan"></textarea>
+          <button class="btn btn-gold" type="submit">Kirim Reservasi</button>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="reservation">
-  <div class="section-title">
-    <h2>Reservasi</h2>
-  </div>
-  <div class="reservation">
-    <form>
-      <input type="text" placeholder="Nama Lengkap" required />
-      <input type="tel" placeholder="No. WhatsApp" required />
-      <select required>
-        <option value="">Pilih Layanan</option>
-        <option>SPA & Massage</option>
-        <option>Lounge</option>
-        <option>Karaoke</option>
-      </select>
-      <input type="date" required />
-      <input type="time" required />
-      <textarea rows="3" placeholder="Catatan Tambahan"></textarea>
-      <button class="btn btn-gold" type="submit">Kirim Reservasi</button>
-    </form>
-  </div>
-</section>
+  <footer>
+    <div class="container">
+      <p>© 2025 NuMars Spa, Karaoke & Lounge. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-<footer>
-  <p>© 2025 NuMars Spa, Karaoke & Lounge. All Rights Reserved.</p>
-</footer>
-
-<!-- WhatsApp Chat -->
-<a class="wa-float" href="https://wa.me/628131318208?text=Halo%20saya%20ingin%20reservasi" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-</a>
-
+  <a class="wa-float" href="https://wa.me/628131318208?text=Halo%20saya%20ingin%20reservasi" target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
 </body>
 </html>
