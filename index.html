@@ -254,25 +254,69 @@
       box-shadow: 0 14px 34px rgba(0,0,0,0.28);
     }
 
-    .counter-intro { padding: 24px; }
-
-    .counter-intro .eyebrow {
-      color: var(--gold-soft);
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 700;
-      margin-bottom: 10px;
+    .counter-intro {
+      padding: 18px;
+      display: grid;
+      place-items: center;
+      min-height: 230px;
+      overflow: hidden;
+      position: relative;
     }
 
-    .counter-intro h2 {
-      color: var(--gold);
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      line-height: 1.2;
-      margin-bottom: 10px;
+    .counter-intro::before {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(212,175,55,0.12);
+      filter: blur(18px);
     }
 
-    .counter-intro p { color: var(--text-muted); font-size: 0.95rem; }
+    .traffic-visual {
+      width: min(230px, 100%);
+      filter: drop-shadow(0 18px 36px rgba(212,175,55,0.22));
+      position: relative;
+      z-index: 1;
+    }
+
+    .traffic-visual .globe-ring,
+    .traffic-visual .traffic-line {
+      fill: none;
+      stroke: var(--gold-soft);
+      stroke-width: 2;
+      stroke-linecap: round;
+      opacity: 0.9;
+    }
+
+    .traffic-visual .traffic-line {
+      stroke: var(--gold);
+      stroke-width: 3;
+      stroke-dasharray: 7 10;
+      animation: trafficFlow 3.5s linear infinite;
+    }
+
+    .traffic-visual .node {
+      fill: var(--gold);
+      stroke: #fff0b5;
+      stroke-width: 1.5;
+    }
+
+    .traffic-visual .pulse {
+      fill: rgba(245,230,168,0.18);
+      stroke: rgba(245,230,168,0.42);
+      transform-origin: center;
+      animation: nodePulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes trafficFlow {
+      to { stroke-dashoffset: -68; }
+    }
+
+    @keyframes nodePulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.45; }
+      50% { transform: scale(1.08); opacity: 0.95; }
+    }
 
     .counter-card {
       padding: 22px;
@@ -395,9 +439,20 @@
     <div class="container">
       <div class="counter-panel">
         <div class="counter-intro">
-          <p class="eyebrow">Enterprise Visitor Counter</p>
-          <h2 id="counter-title">Pantau traffic website secara elegan</h2>
-          <p>Counter ini berjalan langsung di browser dengan tampilan enterprise. Untuk angka global lintas pengunjung, tinggal sambungkan endpoint analytics/API di kemudian hari.</p>
+          <svg class="traffic-visual" viewBox="0 0 240 240" role="img" aria-labelledby="counter-title counter-visual-desc">
+            <title id="counter-title">Enterprise visitor traffic</title>
+            <desc id="counter-visual-desc">Ilustrasi globe dengan jalur traffic internet aktif.</desc>
+            <circle class="pulse" cx="120" cy="120" r="82" />
+            <circle class="globe-ring" cx="120" cy="120" r="74" />
+            <path class="globe-ring" d="M46 120h148M120 46c24 20 36 45 36 74s-12 54-36 74M120 46c-24 20-36 45-36 74s12 54 36 74M63 82c30 12 84 12 114 0M63 158c30-12 84-12 114 0" />
+            <path class="traffic-line" d="M30 174c39-42 68-36 98-16 27 18 50 21 82-16" />
+            <path class="traffic-line" d="M42 68c34 30 63 35 94 22 22-9 42-4 62 18" />
+            <circle class="node" cx="44" cy="68" r="7" />
+            <circle class="node" cx="128" cy="158" r="7" />
+            <circle class="node" cx="198" cy="108" r="7" />
+            <circle class="node" cx="210" cy="142" r="7" />
+            <circle class="node" cx="30" cy="174" r="7" />
+          </svg>
         </div>
         <div class="counter-card">
           <span class="counter-label">Total Visit</span>
