@@ -16,6 +16,7 @@
       --text: #f5f5f5;
       --text-muted: #cfcfcf;
       --surface: rgba(17, 17, 17, 0.82);
+      --green: #25d366;
       --radius: 18px;
       --shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
       --container: min(1120px, 92vw);
@@ -41,7 +42,8 @@
       padding: 40px 0;
       background:
         linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-        url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1600') center/cover;
+        linear-gradient(135deg, rgba(212,175,55,0.12), transparent 36%),
+        linear-gradient(315deg, rgba(245,230,168,0.08), transparent 42%);
     }
 
     .hero-card {
@@ -227,15 +229,142 @@
 
     .wa-float:hover { transform: scale(1.08); }
 
-    .wa-float img {
-      width: 32px;
-      height: 32px;
+
+
+    .visitor-counter {
+      background:
+        radial-gradient(circle at 12% 10%, rgba(212,175,55,0.16), transparent 34%),
+        linear-gradient(145deg, rgba(20,20,20,0.98), rgba(5,5,5,0.98));
+      border-top: 1px solid rgba(212,175,55,0.16);
+      border-bottom: 1px solid rgba(212,175,55,0.16);
     }
+
+    .counter-panel {
+      display: grid;
+      grid-template-columns: 1.1fr repeat(3, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .counter-intro,
+    .counter-card {
+      border: 1px solid rgba(212,175,55,0.22);
+      border-radius: var(--radius);
+      background: rgba(15,15,15,0.76);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.28);
+    }
+
+    .counter-intro {
+      padding: 18px;
+      display: grid;
+      place-items: center;
+      min-height: 230px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .counter-intro::before {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(212,175,55,0.12);
+      filter: blur(18px);
+    }
+
+    .traffic-visual {
+      width: min(230px, 100%);
+      filter: drop-shadow(0 18px 36px rgba(212,175,55,0.22));
+      position: relative;
+      z-index: 1;
+    }
+
+    .traffic-visual .globe-ring,
+    .traffic-visual .traffic-line {
+      fill: none;
+      stroke: var(--gold-soft);
+      stroke-width: 2;
+      stroke-linecap: round;
+      opacity: 0.9;
+    }
+
+    .traffic-visual .traffic-line {
+      stroke: var(--gold);
+      stroke-width: 3;
+      stroke-dasharray: 7 10;
+      animation: trafficFlow 3.5s linear infinite;
+    }
+
+    .traffic-visual .node {
+      fill: var(--gold);
+      stroke: #fff0b5;
+      stroke-width: 1.5;
+    }
+
+    .traffic-visual .pulse {
+      fill: rgba(245,230,168,0.18);
+      stroke: rgba(245,230,168,0.42);
+      transform-origin: center;
+      animation: nodePulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes trafficFlow {
+      to { stroke-dashoffset: -68; }
+    }
+
+    @keyframes nodePulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.45; }
+      50% { transform: scale(1.08); opacity: 0.95; }
+    }
+
+    .counter-card {
+      padding: 22px;
+      display: grid;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .counter-card::after {
+      content: '';
+      position: absolute;
+      inset: auto -20% -46% 22%;
+      height: 90px;
+      background: radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%);
+    }
+
+    .counter-label {
+      color: var(--text-muted);
+      font-size: 0.83rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .counter-value {
+      color: var(--gold-soft);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .counter-meta { color: #9f9f9f; font-size: 0.82rem; }
+
+    .wa-float svg {
+      width: 34px;
+      height: 34px;
+      fill: #fff;
+      display: block;
+    }
+
 
     @media (max-width: 768px) {
       .hero-card { border-radius: 22px; }
 
       form { grid-template-columns: 1fr; }
+
+      .counter-panel { grid-template-columns: 1fr; }
 
       .hero-actions .btn {
         width: min(100%, 320px);
@@ -305,14 +434,98 @@
     </div>
   </section>
 
+
+  <section class="visitor-counter" aria-labelledby="counter-title">
+    <div class="container">
+      <div class="counter-panel">
+        <div class="counter-intro">
+          <svg class="traffic-visual" viewBox="0 0 240 240" role="img" aria-labelledby="counter-title counter-visual-desc">
+            <title id="counter-title">Enterprise visitor traffic</title>
+            <desc id="counter-visual-desc">Ilustrasi globe dengan jalur traffic internet aktif.</desc>
+            <circle class="pulse" cx="120" cy="120" r="82" />
+            <circle class="globe-ring" cx="120" cy="120" r="74" />
+            <path class="globe-ring" d="M46 120h148M120 46c24 20 36 45 36 74s-12 54-36 74M120 46c-24 20-36 45-36 74s12 54 36 74M63 82c30 12 84 12 114 0M63 158c30-12 84-12 114 0" />
+            <path class="traffic-line" d="M30 174c39-42 68-36 98-16 27 18 50 21 82-16" />
+            <path class="traffic-line" d="M42 68c34 30 63 35 94 22 22-9 42-4 62 18" />
+            <circle class="node" cx="44" cy="68" r="7" />
+            <circle class="node" cx="128" cy="158" r="7" />
+            <circle class="node" cx="198" cy="108" r="7" />
+            <circle class="node" cx="210" cy="142" r="7" />
+            <circle class="node" cx="30" cy="174" r="7" />
+          </svg>
+        </div>
+        <div class="counter-card">
+          <span class="counter-label">Total Visit</span>
+          <strong class="counter-value" data-counter="total">0</strong>
+          <span class="counter-meta">Akumulasi kunjungan perangkat ini</span>
+        </div>
+        <div class="counter-card">
+          <span class="counter-label">Visit Hari Ini</span>
+          <strong class="counter-value" data-counter="today">0</strong>
+          <span class="counter-meta" data-counter-date>Real-time lokal</span>
+        </div>
+        <div class="counter-card">
+          <span class="counter-label">Unique Device</span>
+          <strong class="counter-value" data-counter="unique">1</strong>
+          <span class="counter-meta">Privasi aman tanpa cookie pihak ketiga</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="container">
       <p>© 2025 NuMars Spa, Karaoke & Lounge. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <a class="wa-float" href="https://wa.me/628131816733?text=Halo%20saya%20ingin%20reservasi" target="_blank" rel="noopener noreferrer">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  <a class="wa-float" href="https://wa.me/628131816733?text=Halo%20saya%20ingin%20reservasi" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp NuMars">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C9.05 3 3.37 8.66 3.37 15.61c0 2.36.66 4.66 1.9 6.65L3 29l7.02-2.22a12.7 12.7 0 0 0 6.02 1.53c6.99 0 12.67-5.66 12.67-12.61S23.03 3 16.04 3Zm0 22.98c-1.9 0-3.75-.52-5.36-1.51l-.39-.24-4.16 1.32 1.36-4-.26-.41a10.2 10.2 0 0 1-1.56-5.43c0-5.67 4.65-10.29 10.37-10.29s10.37 4.62 10.37 10.29-4.65 10.27-10.37 10.27Zm5.68-7.68c-.31-.15-1.84-.9-2.12-1-.28-.11-.49-.16-.7.15-.2.31-.8 1-.98 1.2-.18.21-.36.23-.67.08-.31-.16-1.31-.48-2.5-1.53-.92-.82-1.55-1.84-1.73-2.15-.18-.31-.02-.48.14-.63.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.15-.7-1.67-.95-2.29-.25-.6-.51-.52-.7-.53h-.6c-.21 0-.54.08-.82.39-.28.31-1.08 1.05-1.08 2.56s1.11 2.97 1.26 3.18c.15.21 2.18 3.31 5.28 4.64.74.32 1.31.51 1.76.65.74.23 1.41.2 1.94.12.59-.09 1.84-.75 2.1-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.21-.59-.36Z"/></svg>
   </a>
+
+  <script>
+    (function () {
+      const storageKey = 'numars-enterprise-counter';
+      const today = new Date().toISOString().slice(0, 10);
+      const defaultStats = { total: 0, today: 0, date: today, unique: 1 };
+      let stats = defaultStats;
+
+      try {
+        stats = JSON.parse(localStorage.getItem(storageKey)) || defaultStats;
+      } catch (error) {
+        stats = defaultStats;
+      }
+
+      if (stats.date !== today) {
+        stats.today = 0;
+        stats.date = today;
+      }
+
+      stats.total = Number(stats.total || 0) + 1;
+      stats.today = Number(stats.today || 0) + 1;
+      stats.unique = Number(stats.unique || 1);
+
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(stats));
+      } catch (error) {
+        // Counter tetap tampil walaupun localStorage dibatasi browser.
+      }
+
+      const formatNumber = new Intl.NumberFormat('id-ID');
+      document.querySelectorAll('[data-counter]').forEach((element) => {
+        const key = element.dataset.counter;
+        element.textContent = formatNumber.format(stats[key] || 0);
+      });
+
+      const dateElement = document.querySelector('[data-counter-date]');
+      if (dateElement) {
+        dateElement.textContent = new Intl.DateTimeFormat('id-ID', {
+          dateStyle: 'medium',
+          timeZone: 'Asia/Jakarta'
+        }).format(new Date());
+      }
+    })();
+  </script>
+
 </body>
 </html>
