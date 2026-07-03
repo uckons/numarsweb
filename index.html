@@ -232,17 +232,20 @@
 
 
     .visitor-counter {
+      padding: 28px 0;
       background:
-        radial-gradient(circle at 12% 10%, rgba(212,175,55,0.16), transparent 34%),
+        radial-gradient(circle at 12% 10%, rgba(212,175,55,0.12), transparent 28%),
         linear-gradient(145deg, rgba(20,20,20,0.98), rgba(5,5,5,0.98));
       border-top: 1px solid rgba(212,175,55,0.16);
       border-bottom: 1px solid rgba(212,175,55,0.16);
     }
 
     .counter-panel {
+      width: min(880px, 100%);
+      margin-inline: auto;
       display: grid;
-      grid-template-columns: 1.1fr repeat(3, 1fr);
-      gap: 16px;
+      grid-template-columns: 140px repeat(3, minmax(140px, 1fr));
+      gap: 12px;
       align-items: stretch;
     }
 
@@ -255,10 +258,10 @@
     }
 
     .counter-intro {
-      padding: 18px;
+      padding: 12px;
       display: grid;
       place-items: center;
-      min-height: 230px;
+      min-height: 116px;
       overflow: hidden;
       position: relative;
     }
@@ -266,16 +269,16 @@
     .counter-intro::before {
       content: '';
       position: absolute;
-      width: 180px;
-      height: 180px;
+      width: 104px;
+      height: 104px;
       border-radius: 50%;
       background: rgba(212,175,55,0.12);
       filter: blur(18px);
     }
 
     .traffic-visual {
-      width: min(230px, 100%);
-      filter: drop-shadow(0 18px 36px rgba(212,175,55,0.22));
+      width: min(108px, 100%);
+      filter: drop-shadow(0 10px 22px rgba(212,175,55,0.22));
       position: relative;
       z-index: 1;
     }
@@ -284,7 +287,7 @@
     .traffic-visual .traffic-line {
       fill: none;
       stroke: var(--gold-soft);
-      stroke-width: 2;
+      stroke-width: 3;
       stroke-linecap: round;
       opacity: 0.9;
     }
@@ -319,8 +322,10 @@
     }
 
     .counter-card {
-      padding: 22px;
+      padding: 16px 18px;
+      min-height: 116px;
       display: grid;
+      align-content: center;
       gap: 8px;
       position: relative;
       overflow: hidden;
@@ -329,14 +334,14 @@
     .counter-card::after {
       content: '';
       position: absolute;
-      inset: auto -20% -46% 22%;
-      height: 90px;
+      inset: auto -20% -62% 28%;
+      height: 68px;
       background: radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%);
     }
 
     .counter-label {
       color: var(--text-muted);
-      font-size: 0.83rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 700;
@@ -344,12 +349,12 @@
 
     .counter-value {
       color: var(--gold-soft);
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.55rem, 2.8vw, 2rem);
       font-weight: 700;
       line-height: 1;
     }
 
-    .counter-meta { color: #9f9f9f; font-size: 0.82rem; }
+    .counter-meta { color: #9f9f9f; font-size: 0.74rem; line-height: 1.35; }
 
     .wa-float svg {
       width: 34px;
@@ -364,7 +369,13 @@
 
       form { grid-template-columns: 1fr; }
 
-      .counter-panel { grid-template-columns: 1fr; }
+      .visitor-counter { padding: 22px 0; }
+
+      .counter-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+      .counter-intro { min-height: 100px; }
+
+      .traffic-visual { width: 92px; }
 
       .hero-actions .btn {
         width: min(100%, 320px);
